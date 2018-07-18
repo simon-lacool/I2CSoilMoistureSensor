@@ -8,18 +8,12 @@
  *                                                                      *
  * MIT license                                                          *
  *----------------------------------------------------------------------*/ 
+#include <Arduino.h>
 
 #ifndef I2CSOILMOISTURESENSOR_H
 #define I2CSOILMOISTURESENSOR_H
 
-#if defined(ARDUINO) && ARDUINO >= 100
-#include <Arduino.h> 
-#else
-#include <WProgram.h> 
-#endif
-
 //Default I2C Address of the sensor
-#define SOILMOISTURESENSOR_DEFAULT_ADDR 0x20
 
 //Soil Moisture Sensor Register Addresses
 #define SOILMOISTURESENSOR_GET_CAPACITANCE 	0x00 // (r) 	2 bytes
@@ -36,7 +30,7 @@
 
 class I2CSoilMoistureSensor {
     public:
-        I2CSoilMoistureSensor(uint8_t addr = SOILMOISTURESENSOR_DEFAULT_ADDR);
+        I2CSoilMoistureSensor(uint8_t addr);
 
 		void begin(bool wait = false);
         unsigned int getCapacitance();
